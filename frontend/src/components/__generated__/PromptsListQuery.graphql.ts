@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<18b61481437f1687b2f371f7de1faed1>>
+ * @generated SignedSource<<6e982c5a529dc3aa1a4e89326eb99c11>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,8 @@
 import { ConcreteRequest } from 'relay-runtime';
 export type PromptsListQuery$variables = Record<PropertyKey, never>;
 export type PromptsListQuery$data = {
-  readonly getPrompts: ReadonlyArray<{
+  readonly prompts: ReadonlyArray<{
+    readonly content: string;
     readonly id: number;
     readonly title: string;
   }>;
@@ -26,9 +27,9 @@ var v0 = [
   {
     "alias": null,
     "args": null,
-    "concreteType": "PromptType",
+    "concreteType": "Prompt",
     "kind": "LinkedField",
-    "name": "getPrompts",
+    "name": "prompts",
     "plural": true,
     "selections": [
       {
@@ -43,6 +44,13 @@ var v0 = [
         "args": null,
         "kind": "ScalarField",
         "name": "title",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "content",
         "storageKey": null
       }
     ],
@@ -67,16 +75,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "5db325182af8a65e542bc622b76ac5b0",
+    "cacheID": "12ad96f2f050ecb5bd2c0fdea35354ed",
     "id": null,
     "metadata": {},
     "name": "PromptsListQuery",
     "operationKind": "query",
-    "text": "query PromptsListQuery {\n  getPrompts {\n    id\n    title\n  }\n}\n"
+    "text": "query PromptsListQuery {\n  prompts {\n    id\n    title\n    content\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "8dd4ccd7b41273261ff81959c7f21729";
+(node as any).hash = "00f52fd8976fe324f784a8afa9a0fe9a";
 
 export default node;

@@ -41,7 +41,7 @@
   },
   "relay": {
     "src": "./src",
-    "schema": "../backend/schema.graphql",
+    "schema": "../backend/schemas/generated/schema.graphql",
     "language": "typescript",
     "artifactDirectory": "./src/components/__generated__",
     "eagerEsModules": true

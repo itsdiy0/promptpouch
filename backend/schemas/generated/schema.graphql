@@ -1,0 +1,41 @@
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type Mutation {
+  register(input: UserInput!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+  createPrompt(input: PromptInput!): Prompt!
+  updatePrompt(id: Int!, input: PromptInput!): Prompt!
+  deletePrompt(id: Int!): Boolean!
+}
+
+type Prompt {
+  id: Int!
+  title: String!
+  content: String!
+  ownerId: Int
+}
+
+input PromptInput {
+  title: String!
+  content: String!
+}
+
+type Query {
+  getPrompts: [Prompt!]!
+  getPrompt(id: Int!): Prompt
+}
+
+type User {
+  id: Int!
+  email: String!
+  username: String!
+}
+
+input UserInput {
+  email: String!
+  username: String!
+  password: String!
+}

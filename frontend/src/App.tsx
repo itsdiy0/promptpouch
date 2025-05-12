@@ -1,7 +1,7 @@
 import './App.css';
 import { RelayProvider } from './relay/RelayProvider';
 import PromptsList from './components/PromptsList';
-
+import CreatePrompt from './components/CreatePrompt';
 function App() {
   return (
     <RelayProvider>
@@ -11,6 +11,7 @@ function App() {
         </header>
         <main>
           <PromptsList />
+          <CreatePrompt />
         </main>
       </div>
     </RelayProvider>
