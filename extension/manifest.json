@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "PromptPouch",
+  "version": "0.1.0",
+  "description": "Save and manage your LLM prompts.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
