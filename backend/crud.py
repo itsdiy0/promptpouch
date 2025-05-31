@@ -15,6 +15,15 @@ async def get_prompts(db: AsyncSession, skip: int = 0, limit: int = 10):
     result = await db.execute(select(models.Prompt).offset(skip).limit(limit))
     return result.scalars().all()
 
+async def get_prompts_by_owner(db: AsyncSession, owner_id: int, skip: int = 0, limit: int = 10):
+    result = await db.execute(
+        select(models.Prompt)
+        .filter(models.Prompt.owner_id == owner_id)
+        .offset(skip)
+        .limit(limit)
+    )
+    return result.scalars().all()
+
 async def get_prompt_by_id(db: AsyncSession, prompt_id: int):
     result = await db.execute(select(models.Prompt).filter(models.Prompt.id == prompt_id))
     return result.scalar_one_or_none()

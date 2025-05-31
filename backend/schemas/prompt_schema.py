@@ -20,16 +20,45 @@ class PromptQueries:
     @strawberry.field
     async def get_prompts(self, info) -> List[Prompt]:
         db = info.context["db"]
+        # Get all prompts - no authentication required
         prompts = await crud.get_prompts(db)
-        return [Prompt(id=p.id, title=p.title, content=p.content, owner_id=p.owner_id) for p in prompts]
+        return [Prompt(id=p.id, title=p.title, content=p.content, owner_id=p.owner_id) 
+                for p in prompts]
+    
+    @strawberry.field
+    async def get_my_prompts(self, info) -> List[Prompt]:
+        db = info.context["db"]
+        
+        # Get current user and verify authentication
+        auth_info = await get_current_user(info)
+        if not auth_info.user_id:
+            raise Exception("Authentication required")
+        
+        # Get prompts owned by the authenticated user using the new CRUD function
+        prompts = await crud.get_prompts_by_owner(db, auth_info.user_id)
+        
+        return [Prompt(id=p.id, title=p.title, content=p.content, owner_id=p.owner_id) 
+                for p in prompts]
     
     @strawberry.field
     async def get_prompt(self, info, id: int) -> Optional[Prompt]:
         db = info.context["db"]
-        prompt = await crud.get_prompt(db, id)
-        if prompt:
-            return Prompt(id=prompt.id, title=prompt.title, content=prompt.content, owner_id=prompt.owner_id)
-        return None
+        
+        # Get current user and verify authentication
+        auth_info = await get_current_user(info)
+        if not auth_info.user_id:
+            raise Exception("Authentication required")
+        
+        prompt = await crud.get_prompt_by_id(db, id)
+        
+        # Check if prompt exists and belongs to the authenticated user
+        if not prompt:
+            return None
+        
+        if prompt.owner_id != auth_info.user_id:
+            raise Exception("You don't have permission to view this prompt")
+            
+        return Prompt(id=prompt.id, title=prompt.title, content=prompt.content, owner_id=prompt.owner_id)
 
 @strawberry.type
 class PromptMutations:
@@ -42,7 +71,6 @@ class PromptMutations:
         if not auth_info.user_id:
             raise Exception("Authentication required")
         
-        print(auth_info.user_id)
         prompt = await crud.create_prompt(
             db, 
             title=input.title, 

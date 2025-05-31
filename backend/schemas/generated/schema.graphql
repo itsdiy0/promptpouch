@@ -25,6 +25,7 @@ input PromptInput {
 
 type Query {
   getPrompts: [Prompt!]!
+  getMyPrompts: [Prompt!]!
   getPrompt(id: Int!): Prompt
 }
 
