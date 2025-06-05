@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Hello World Extension",
+    "version": "1.0",
+    "description": "A simple Chrome extension with Preact, shadcn/ui, and urql",
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "action": {
+      "default_popup": "index.html",
+      "default_title": "Hello World Extension"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "background": {
+      "service_worker": "background.js"
+    }
+}

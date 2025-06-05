@@ -1,0 +1,36 @@
+{
+  "name": "extension",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build watch",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@preact/compat": "^18.3.1",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/vite": "^4.1.8",
+    "@urql/exchange-auth": "^2.2.1",
+    "@urql/exchange-graphcache": "^7.2.3",
+    "@urql/preact": "^4.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "graphql": "^16.11.0",
+    "lucide-react": "^0.511.0",
+    "preact": "^10.26.8",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.8",
+    "urql": "^4.2.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.1",
+    "@types/chrome": "^0.0.325",
+    "@types/node": "^22.15.28",
+    "tw-animate-css": "^1.3.2",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}
