@@ -35,6 +35,9 @@
     "vite-plugin-relay": "^2.1.0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "@radix-ui/react-label": "^2.1.6",
+    "@radix-ui/react-slot": "^1.2.2",
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/vite": "^4.1.6",
     "class-variance-authority": "^0.7.1",
@@ -43,10 +46,12 @@
     "process": "^0.11.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.56.3",
     "react-relay": "^18.2.0",
     "relay-runtime": "^18.2.0",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.6"
+    "tailwindcss": "^4.1.6",
+    "zod": "^3.24.4"
   },
   "relay": {
     "src": "./src",
