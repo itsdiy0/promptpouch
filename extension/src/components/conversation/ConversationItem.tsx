@@ -12,8 +12,8 @@ export const ConversationItem = ({ conversation }: ConversationItemProps) => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + '...';
   };
-
-  console.log('Conversation clicked:', conversation.id);
+  console.log(conversation.id)
+  
   return (
     <div className="group relative border rounded-lg p-2 mb-3 bg-card hover:bg-card/80 transition-colors">
       <div className="flex justify-between items-start gap-3">
