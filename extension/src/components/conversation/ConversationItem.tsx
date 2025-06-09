@@ -12,16 +12,27 @@ export const ConversationItem = ({ conversation }: ConversationItemProps) => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + '...';
   };
-  console.log(conversation.id)
+  
+  // Function to navigate to the conversation in the main page
+  const navigateToConversation = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0]?.id) {
+        chrome.tabs.sendMessage(tabs[0].id, {
+          action: 'navigateToConversation',
+          conversationId: conversation.id
+        });
+      }
+    });
+  };
   
   return (
     <div className="group relative border rounded-lg p-2 mb-3 bg-card hover:bg-card/80 transition-colors">
       <div className="flex justify-between items-start gap-3">
         <div 
+          onClick={navigateToConversation}
           className="flex-1 cursor-pointer hover:text-primary transition-colors" 
           title="Click to navigate to this conversation"
         >
-
           <p className="text-sm leading-relaxed">{truncateText(conversation.prompt)}</p>
         </div>
         

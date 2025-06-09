@@ -39,6 +39,27 @@ interface ExtractedMessage {
             // Add a specific message type that can be triggered from popup
             this.addIdsToConversationTurns();
             sendResponse({ success: true });
+          } else if (message.action === 'navigateToConversation') {
+            // Navigate to the conversation in the main page
+            const id = message.conversationId;
+            if (id) {
+              console.log(`Navigating to conversation with ID: ${id}`);
+              // Use window.location.hash to navigate
+              window.location.hash = id;
+              
+              // Optional: highlight the element
+              setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                  element.style.transition = 'background-color 0.5s';
+                  element.style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+                  setTimeout(() => {
+                    element.style.backgroundColor = '';
+                  }, 2000);
+                }
+              }, 100);
+            }
+            sendResponse({ success: true });
           }
           return true; // Keep the message channel open for async response
         });
