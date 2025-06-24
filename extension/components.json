@@ -3,6 +3,9 @@
   "style": "new-york",
   "rsc": false,
   "tsx": true,
+  "theme": {
+    "primary": "pp"
+  },
   "tailwind": {
     "config": "",
     "css": "src/index.css",

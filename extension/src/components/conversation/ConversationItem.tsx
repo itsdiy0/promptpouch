@@ -26,7 +26,7 @@ export const ConversationItem = ({ conversation }: ConversationItemProps) => {
   };
   
   return (
-    <div className="group relative border rounded-lg p-2 mb-3 bg-card hover:bg-card/80 transition-colors">
+    <div className="group rounded-lg p-2 mb-3 bg-card hover:bg-brand-600 transition-colors">
       <div className="flex justify-between items-start gap-3">
         <div 
           onClick={navigateToConversation}
